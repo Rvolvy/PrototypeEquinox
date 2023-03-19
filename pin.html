@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pradipta Raffa Pratama</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#324154] flex justify-center items-center w-[100%] h-[100vh]">
+  <main class="bg-[#597298] flex justify-center items-center w-[80%] rounded-[10px]">
+    <div class="flex flex-col justify-center items-center w-[60%] px-[50px] gap-[50px]">
+      <p class="text-white text-[30px] text-center font-mono">Silahkan Masukan Pin Anda</p>
+      <div class="flex flex-wrap justify-center items-center gap-[10px]">
+        <input class="w-[300px] text-[20px] font-mono outline-none px-[10px] py-[3px] rounded-[5px]" type="password" id="pin">
+        <button onclick="Click()" class="text-[#00ff00] text-[25px] text-center font-mono">Enter>></button>
+        <a href="bahasa.html" class="text-[#ffaa90] text-[25px] text-center font-mono">Cancel>></a>
+      </div>
+      <p class="text-white text-[30px] text-center font-mono">Tekan "Cancel" Untuk Membatalkan</p>
+    </div>
+    <div class="flex justify-center items-center w-[40%]">
+      <img class="rounded-[10px] w-[100%]" src="https://github.com/rpl-yaso-2223/simulasi_ukkrpl_2023/blob/main/src/images/masukan-pin.jpg?raw=true" alt="Masukan Pin">
+    </div>
+  </main>
+  <script>
+    let pin = document.getElementById('pin')
+    let salah = 2
+
+    function Click() {
+      if (pin.value == '') {
+        alert('Pin Tidak Boleh Kosong!')
+      }
+      else if (pin.value == 123456){
+        location.href = 'paket.html'
+      }
+      else if(pin.value == 'ilo'){
+        alert('Anda menyebut saia?')
+      }
+      else{
+        if (salah == 2) {
+          alert(`Pin salah, sisa kesempatan: ${salah}`)
+          salah = 1
+          pin.value = ''
+        }
+        else if (salah == 1) {
+          alert(`Pin salah, sisa kesempatan: ${salah}`)
+          salah = 0
+          pin.value = ''
+        }
+        else if (salah == 0) {
+          alert(`Pin salah, coba lagi nanti`)
+          location.href = 'output.html'
+        }
+      }
+    }
+  </script>
+</body>
+</html>

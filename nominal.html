@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pradipta Raffa Pratama</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#324154] flex justify-center items-center w-[100%] h-[100vh]">
+  <main class="bg-[#597298] flex justify-center items-center w-[80%] rounded-[10px]">
+    <div class="flex flex-col justify-center items-center w-[60%] px-[50px] gap-[50px]">
+      <p class="text-white text-[35px] text-center font-mono">Masukan Jumlah Nominal 50.000 dan 100.000</p>
+      <div class="flex flex-wrap justify-center items-center gap-[10px]">
+        <input class="w-[300px] text-[20px] font-mono outline-none px-[10px] py-[3px] rounded-[5px]" type="number" id="nom">
+        <button onclick="Click()" class="text-[#00ff00] text-[25px] text-center font-mono">Enter>></button>
+        <a href="paket.html" class="text-[#ffaa90] text-[25px] text-center font-mono">Cancel>></a>
+      </div>
+      <p class="text-white text-[30px] text-center font-mono">Tekan "Cancel" Untuk Membatalkan</p>
+    </div>
+    <div class="flex justify-end items-end w-[40%]">
+      <img class="rounded-[10px] w-[100%]" src="https://github.com/rpl-yaso-2223/simulasi_ukkrpl_2023/blob/main/src/images/ambil-uang.jpg?raw=true" alt="Ambil Uang">
+    </div>
+  </main>
+  <script>
+    let nom = document.getElementById('nom')
+
+    let uang = localStorage.getItem('uang')
+    if (!uang) {
+      localStorage.setItem('uang', 1000000)
+    }
+
+    alert(`Anda memiliki saldo Rp.${uang}`)
+
+    function Click() {
+      if (nom.value == '') {
+        alert('Nominal tidak boleh kosong')
+      }
+      else if (parseInt(nom.value) <= 0) {
+        alert('Nominal tidak boleh 0 atau minus!')
+      }
+      else if (parseInt(nom.value) > parseInt(uang)) {
+        alert('Saldo tidak cukup!')
+      }
+      else if (parseInt(nom.value) % 50000 == 0) {
+        if (confirm(`Anda memiliki saldo sebesar Rp.${uang} dan akan mengambil uang tunai sebesar Rp.${nom.value} dengan sisa saldo Rp.${uang - nom.value}`)) {
+          localStorage.setItem('uang', parseInt(uang) - parseInt(nom.value))
+          location.href = 'output.html'
+        }
+      }
+      else{
+        alert('Nominal harus pecahan 50.000 dan 100.000')
+      }
+    }
+  </script>
+</body>
+</html>
